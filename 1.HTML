@@ -1,0 +1,100 @@
+<html>
+<head>
+    <script>
+        function foo()
+        {
+            var aValue = document.getElementById("aField").value;
+            var bValue = document.getElementById("bField").value;
+            var result = document.getElementById("result");
+            var sum = Number(aValue) + Number(bValue);
+            // alert(sum);
+            result.innerText = "Result:" + sum;
+            // alert(result.innerText);
+        }
+
+        function Add(a,b)
+        {
+            var aValue = document.getElementById("aField").value;
+            var bValue = document.getElementById("bField").value;
+            var result = Number(aValue) + Number(bValue);
+            PrintResult(result);
+        }
+
+        function Multi(a,b)
+        {
+            var aValue = document.getElementById("aField").value;
+            var bValue = document.getElementById("bField").value;
+            var result = Number(aValue) * Number(bValue);
+            PrintResult(result);
+        }
+
+        function Divide(a,b)
+        {
+            var aValue = document.getElementById("aField").value;
+            var bValue = document.getElementById("bField").value;
+            var result = Number(aValue) / Number(bValue);
+            PrintResult(result);
+        }
+
+        function Substract(a,b)
+        {
+            var aValue = document.getElementById("aField").value;
+            var bValue = document.getElementById("bField").value;
+            var result = Number(aValue) - Number(bValue);
+            PrintResult(result);
+        }
+
+        function PrintResult(result)
+        {
+           
+            var resultDiv = document.getElementById("result");
+            resultDiv.innerText = "Result:" + result;
+             if((result)>0)
+             {
+                resultDiv.style.color='green';
+             }
+             else
+             {
+                resultDiv.style.color='red';
+             }
+            
+        }
+        function addOne()
+        {
+            try{
+                var strResult=document.getElementById("result").innerText;
+                var resultVal = Number(strResult.replace("Result:",""));
+                console.log(resultVal);
+                resultVal++;
+               strResult=document.getElementById("result").innerText= "Result:"+resultVal;
+               var currentTimeDiv = document.getElementById("currentTime");
+               var d = new Date();
+               currentTimeDiv.innerHTML=d.getTime();
+                setTimeout(addOne,5000);
+            }
+            catch(err)
+            {
+                console.log(err);
+            }
+        }
+    </script>
+</head>
+    <body onload="addOne()">
+            <label>A</label>
+            <input type=text id="aField" value=760><br><br>
+            <label>B</label>
+            <input type=text id="bField" value=30><br>
+            <br>
+            <input type=button onclick="Add()" value="+" size=4> 
+            <input type=button onclick="Multi()" value="*" size=4>
+            <input type=button onclick="Divide()" value="/" size=4>
+            <input type=button onclick="Substract()" value="-" size=4>
+            <br>
+            <div id="result">
+                Result:
+            </div>
+            <div id="currentTime">
+            </div>
+            
+    </body>
+</html>
